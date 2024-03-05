@@ -3,7 +3,12 @@ import { v } from "convex/values";
 
 // Skema table 
 export default defineSchema({
-  files: defineTable({ name: v.string(), orgId: v.string() }) .index(
+  files: defineTable({ 
+    name: v.string(),
+    orgId: v.string(),
+    fileId: v.id("_storage"),
+    desc: v.optional(v.string())})
+    .index(
     "by_orgId",
     ["orgId"]
   ),
