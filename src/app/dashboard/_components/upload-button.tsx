@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useMutation, useQuery } from "convex/react";
-import { api } from "../../convex/_generated/api";
+import { api } from "../../../../convex/_generated/api";
 import { Dialog,
   DialogContent,
   DialogDescription,
@@ -27,6 +27,7 @@ import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
+import { Doc } from "../../../../convex/_generated/dataModel";
 import { Textarea } from "@/components/ui/textarea";
  
 const formSchema = z.object({
@@ -104,7 +105,7 @@ export function UploadButton() {
   };
 
   const [isFileDialogOpen, setIsFileDialogOpen] = useState(false);
-  const files = useQuery(api.files.getFile, orgId ? {orgId} : "skip");
+  const files = useQuery(api.files.getFiles, orgId ? {orgId} : "skip");
   const createFile = useMutation(api.files.createFile);
   
   return (
